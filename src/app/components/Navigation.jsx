@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Navigation = () => (
   <div>
     <Link to="/dashboard">
-      <h1>My Application</h1>
+      <h2>MERN App</h2>
     </Link>
   </div>
 );
