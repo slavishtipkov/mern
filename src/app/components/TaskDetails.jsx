@@ -64,7 +64,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(mutations.setTaskGroup(id, e.target.value));
     },
     setTaskName(e) {
-      dispatch(mutations.setTaskGroup(id, e.target.value));
+      dispatch(mutations.setTaskName(id, e.target.value));
     }
   };
 };

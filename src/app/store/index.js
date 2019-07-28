@@ -3,7 +3,7 @@ import { createLogger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 
 import { defaultState } from "../../server/defaultState";
-import { taskCreationSaga } from "./sagas.mock.js";
+import { taskCreationSaga, taskModificationSaga } from "./sagas";
 import * as mutations from "./mutations";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -32,7 +32,7 @@ export const store = createStore(
         case mutations.SET_TASK_GROUP:
           return tasks.map(task => {
             return task.id === action.taskId
-              ? { ...task, groupId: action.groupId }
+              ? { ...task, group: action.groupId }
               : task;
           });
         case mutations.SET_TASK_NAME:
@@ -58,3 +58,4 @@ export const store = createStore(
 );
 
 sagaMiddleware.run(taskCreationSaga);
+sagaMiddleware.run(taskModificationSaga);
