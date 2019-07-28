@@ -4,6 +4,8 @@ import bodyParser from "body-parser";
 
 import { connectDb } from "./connectDb";
 
+import "./initializeDb";
+
 const port = 7777;
 const app = express();
 
