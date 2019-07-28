@@ -4,6 +4,8 @@ import bodyParser from "body-parser";
 
 import { connectDb } from "./connectDb";
 
+import { authenticationRoute } from "./authenticate";
+
 import "./initializeDb";
 
 const port = 7777;
@@ -12,6 +14,8 @@ const app = express();
 app.listen(port, console.log("Server listening on port ... ", port));
 
 app.use(cors(), bodyParser.urlencoded({ extended: true }), bodyParser.json());
+
+authenticationRoute(app);
 
 export const addNewTask = async task => {
   let db = await connectDb();
