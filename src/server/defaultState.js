@@ -5,7 +5,7 @@ export const defaultState = {
     {
       id: "U1",
       name: "Dev",
-      passwordHash: md5("TUPLES")
+      passwordHash: md5("1123")
     },
     {
       id: "U2",

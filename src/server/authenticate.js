@@ -6,7 +6,6 @@ const authenticationTokens = [];
 
 async function assembleUserState(user) {
   let db = await connectDb();
-  debugger;
 
   let tasks = await db
     .collection("tasks")
@@ -29,14 +28,12 @@ async function assembleUserState(user) {
 }
 
 export const authenticationRoute = app => {
-  debugger;
   app.post("/authenticate", async (req, res) => {
     let { username, password } = req.body;
     let db = await connectDb();
     let collection = db.collection("users");
 
     let user = await collection.findOne({ name: username });
-    debugger;
 
     if (!user) {
       return res.status(500).send("User not found");
@@ -55,7 +52,7 @@ export const authenticationRoute = app => {
       token,
       userId: user.id
     });
-    debugger;
+
     let state = await assembleUserState(user);
 
     res.send({ token, state });

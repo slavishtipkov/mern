@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import * as mutations from "../store/mutations";
+import * as mutations from "../redux/mutations";
 
 const TaskDetail = ({
   id,
