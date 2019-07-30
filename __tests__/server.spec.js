@@ -1,4 +1,4 @@
-import { addNewTask } from "./server";
+import { addNewTask } from "../src/server/server";
 
 (async function myFunc() {
   await addNewTask({

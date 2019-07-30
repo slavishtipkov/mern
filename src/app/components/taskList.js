@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { requestTaskCreation } from "../redux/mutations";
+import { requestTaskCreation } from "../redux/saga/mutations";
 
 export const TaskList = ({ tasks, name, id, createNewTask }) => (
   <div>

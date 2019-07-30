@@ -6,7 +6,7 @@ import {
   taskCreationSaga,
   taskModificationSaga,
   userAuthenticationSaga
-} from "../sagas";
+} from "../saga/sagas";
 
 import rootReducer from "../reducers";
 

@@ -1,4 +1,4 @@
-import * as mutations from "../mutations";
+import * as mutations from "../saga/mutations";
 
 const initState = {};
 

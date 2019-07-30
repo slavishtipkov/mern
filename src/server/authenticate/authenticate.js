@@ -1,6 +1,6 @@
 import uuid from "uuid";
 import md5 from "md5";
-import { connectDb } from "./connectDb";
+import { connectDb } from "../db/connectDb";
 
 const authenticationTokens = [];
 

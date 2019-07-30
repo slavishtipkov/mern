@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import * as mutations from "../redux/mutations";
+import * as mutations from "../redux/saga/mutations";
 
 const LoginComponent = ({ authenticateUser, authenticated }) => {
   return (

@@ -2,11 +2,13 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 
-import { connectDb } from "./connectDb";
+import { connectDb } from "./db/connectDb";
 
-import { authenticationRoute } from "./authenticate";
+import { authenticationRoute } from "./authenticate/authenticate";
+import { newTaskRoute } from "./tasks/newTask";
+import { updateTaskRoute } from "./tasks/updateTask";
 
-import "./initializeDb";
+import "./db/initializeDb";
 
 const port = 7777;
 const app = express();
@@ -17,40 +19,6 @@ app.use(cors(), bodyParser.urlencoded({ extended: true }), bodyParser.json());
 
 authenticationRoute(app);
 
-export const addNewTask = async task => {
-  let db = await connectDb();
-  let collection = db.collection("tasks");
-  await collection.insertOne(task);
-};
+newTaskRoute(app);
 
-export const updateTask = async task => {
-  let { id, group, isComplete, name } = task;
-  let db = await connectDb();
-  let collection = db.collection("tasks");
-
-  if (group) {
-    await collection.updateOne({ id }, { $set: { group } });
-  }
-
-  if (name) {
-    await collection.updateOne({ id }, { $set: { name } });
-  }
-
-  if (isComplete !== undefined) {
-    await collection.updateOne({ id }, { $set: { isComplete } });
-  }
-};
-
-app.post("/task/new", async (req, res) => {
-  let task = req.body.task;
-  await addNewTask(task);
-  res.status(200).send();
-});
-
-app.post("/task/update", async (req, res) => {
-  let task = req.body.task;
-  await updateTask(task);
-  res.status(200).send();
-});
-
-//app.use("/chat", chat);
+updateTaskRoute(app);

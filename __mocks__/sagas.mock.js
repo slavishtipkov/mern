@@ -1,5 +1,5 @@
 import { take, put, select } from "redux-saga/effects";
-import * as mutations from "./mutations";
+import * as mutations from "../src/app/redux/mutations";
 import uuid from "uuid";
 
 export function* taskCreationSaga() {
